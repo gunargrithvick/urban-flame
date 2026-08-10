@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Login form (Restaurant.html)
+    // Login form (index.html)
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', e => {
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
             users[email] = { name, phone, message, password: 'welcome123' };
             localStorage.setItem('uf_users', JSON.stringify(users));
             alert('Thanks for signing up, ' + name + '! Your demo password is "welcome123" - use it to log in on the home page.');
-            window.location.href = 'Restaurant.html';
+            window.location.href = 'index.html';
         });
     }
 });
