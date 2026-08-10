@@ -1,6 +1,10 @@
 # Urban Flame
 
-A multi-page restaurant website built with plain HTML, CSS, and JavaScript. No frameworks, no backend.
+A multi-page restaurant website built with HTML, CSS, and Vanilla JavaScript. No frameworks or backend.
+
+## Objective
+
+Urban Flame was created as my first web development project to practice HTML, CSS, and JavaScript by building a responsive multi-page restaurant website with client-side functionality.
 
 ## Features
 
@@ -50,13 +54,13 @@ Urban-Flame/
 └── README.md
 ```
 
-## Running it
+## How to Run
 
 Open `index.html` in a browser, or serve the folder locally:
 
 ```
 cd Urban-Flame
-python3 -m http.server 8000
+python -m http.server 8000
 ```
 
 Then go to `http://localhost:8000`.
@@ -66,8 +70,3 @@ Then go to `http://localhost:8000`.
 - No backend or database
 - Login and sign up only work within the same browser (`localStorage`), not across devices
 - Not real authentication — passwords aren't hashed or verified against a server
-
-## Changelog
-
-- **Fixed navbar collision**: the logo, nav links, and search box used fixed-width floated boxes with mismatched pixel math, which made the search bar overlap the nav links (and sometimes the page content below) once real text was measured. Rebuilt the navbar with flexbox across all pages so it sizes correctly at any width, and fixed matching mobile styles.
-- **Fixed search redirect**: `menu.html` was referenced with a capital `M` in `js/main.js`, which would 404 on case-sensitive hosting (Linux servers, GitHub Pages, etc.).
