@@ -65,6 +65,10 @@ Open `index.html` in a browser.
 - Login and sign up only work within the same browser (`localStorage`), not across devices
 - Not real authentication — passwords aren't hashed or verified against a server
 
+## Author
+
+Guna Rithvick
+
 ## License
 
 This project is licensed under the MIT License.
