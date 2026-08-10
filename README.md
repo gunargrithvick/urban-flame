@@ -51,22 +51,20 @@ Urban-Flame/
 ├── js/main.js         Search, login, and signup logic
 ├── images/           Site images
 ├── screenshots/      Preview images used in this readme
-└── README.md
+├── README.md
+└── LICENSE
 ```
 
 ## How to Run
 
-Open `index.html` in a browser, or serve the folder locally:
-
-```
-cd Urban-Flame
-python -m http.server 8000
-```
-
-Then go to `http://localhost:8000`.
+Open `index.html` in a browser.
 
 ## Limitations
 
 - No backend or database
 - Login and sign up only work within the same browser (`localStorage`), not across devices
 - Not real authentication — passwords aren't hashed or verified against a server
+
+## License
+
+This project is licensed under the MIT License.
