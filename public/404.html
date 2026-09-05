@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page not found &#8211; Urban Flame</title>
+    <meta name="description" content="That page does not exist at Urban Flame. Head back to the menu, our story, or the contact page.">
+    <meta name="theme-color" content="#ff7200">
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true"></span>Urban Flame
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
+
+            <div class="site-nav" id="site-nav">
+                <nav aria-label="Main">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html">Book</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <form class="search" id="search-form" role="search" action="menu.html" method="get">
+                    <label class="sr-only" for="site-search">Search the menu</label>
+                    <input class="srch" id="site-search" type="search" name="q" placeholder="Search" autocomplete="off">
+                    <button class="srch-go" type="submit"><span class="sr-only">Search</span></button>
+                </form>
+
+                <div class="session" id="session" hidden></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="shell page">
+            <section class="section closing">
+                <p class="eyebrow">Error 404</p>
+                <h1 class="section-title">That page has gone cold</h1>
+                <p class="section-lead">
+                    The link you followed does not point at anything here. It may have been
+                    renamed, or it may never have existed.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button--primary" href="menu.html">See the menu</a>
+                    <a class="button button--ghost" href="index.html">Back to home</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell">
+            <div class="footer-legal">
+                <p>&copy; <span data-year>2026</span> Urban Flame. All rights reserved.</p>
+                <p><a href="contact.html">Tell us which link was broken</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

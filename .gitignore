@@ -1,0 +1,27 @@
+#  Node - only used for the local preview server and the scripts in tools/.
+#  package-lock.json is intentionally committed.
+node_modules/
+npm-debug.log*
+
+#  Camera originals: 47 MB of source files that tools/optimize_images.py reads
+#  to regenerate public/assets/img/. Keep them locally, never ship or commit
+#  them. They live outside public/ so no deploy can pick them up by accident.
+media/originals/
+
+#  Editor and OS noise.
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+#  Local deploy caches.
+.netlify/
+.vercel/
+
+#  Database URL and session secret. .env.example is the committed template;
+#  every real .env stays on the machine that made it.
+.env
+.env.*
+!.env.example

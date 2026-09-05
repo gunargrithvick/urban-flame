@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a table &#8211; Urban Flame</title>
+    <meta name="description" content="Reserve one of thirty-two covers at Urban Flame in Indiranagar, Bengaluru. Pick a date, see which times are still free, and hold a table for ninety minutes.">
+    <meta name="theme-color" content="#ff7200">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Urban Flame">
+    <meta property="og:title" content="Book a table &#8211; Urban Flame">
+    <meta property="og:description" content="Thirty-two covers on Ember Lane, Indiranagar. Choose a date and time and hold a table for ninety minutes.">
+    <meta property="og:image" content="assets/img/interior-dining.jpg">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/book.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true"></span>Urban Flame
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
+
+            <div class="site-nav" id="site-nav">
+                <nav aria-label="Main">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html" aria-current="page">Book</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <form class="search" id="search-form" role="search" action="menu.html" method="get">
+                    <label class="sr-only" for="site-search">Search the menu</label>
+                    <input class="srch" id="site-search" type="search" name="q" placeholder="Search" autocomplete="off">
+                    <button class="srch-go" type="submit"><span class="sr-only">Search</span></button>
+                </form>
+
+                <div class="session" id="session" hidden></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="shell page">
+            <header class="page-header">
+                <p class="eyebrow">Reservations</p>
+                <h1 class="page-title">Book a table</h1>
+                <p class="page-intro">
+                    Thirty-two covers, one grill, and ninety minutes to a table. Pick a date
+                    and the times still open will appear below.
+                </p>
+                <p class="page-intro book-mode" id="book-mode-note"
+                   data-server-text="Bookings are held on the server, so a table taken here is taken for everyone. You will get a six-character reference to quote when you arrive.">
+                    This copy of the site has no reservations server, so a table cannot actually
+                    be held. The form below keeps your request in this browser and gives you the
+                    details to bring to the counter.
+                </p>
+            </header>
+
+            <div class="book-layout">
+                <section class="panel book-main" aria-labelledby="book-form-title">
+                    <h2 class="book-card-title" id="book-form-title">Your table</h2>
+
+                    <form id="booking-form" action="book.html" method="post" novalidate>
+                        <noscript><p class="form-note">JavaScript is required for this form; nothing is submitted without it.</p></noscript>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="book-name">Your name</label>
+                                <input class="input" id="book-name" name="name" type="text"
+                                       autocomplete="name" placeholder="Asha Menon"
+                                       aria-describedby="book-name-error" required>
+                                <p class="field-error" id="book-name-error"></p>
+                            </div>
+
+                            <div class="field">
+                                <label for="book-email">Email</label>
+                                <input class="input" id="book-email" name="email" type="email"
+                                       autocomplete="email" placeholder="you@example.com"
+                                       aria-describedby="book-email-error" required>
+                                <p class="field-error" id="book-email-error"></p>
+                            </div>
+                        </div>
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="book-phone">Phone</label>
+                                <input class="input" id="book-phone" name="phone" type="tel"
+                                       autocomplete="tel" placeholder="+91 98450 00000"
+                                       aria-describedby="book-phone-hint book-phone-error" required>
+                                <p class="field-hint" id="book-phone-hint">So the kitchen can reach you if plans change.</p>
+                                <p class="field-error" id="book-phone-error"></p>
+                            </div>
+
+                            <div class="field">
+                                <label for="book-party">How many of you?</label>
+                                <select class="input" id="book-party" name="party"
+                                        aria-describedby="book-party-error">
+                                    <option value="1">1 person</option>
+                                    <option value="2" selected>2 people</option>
+                                    <option value="3">3 people</option>
+                                    <option value="4">4 people</option>
+                                    <option value="5">5 people</option>
+                                    <option value="6">6 people</option>
+                                    <option value="7">7 people</option>
+                                    <option value="8">8 people</option>
+                                    <option value="9">9 people</option>
+                                    <option value="10">10 people</option>
+                                    <option value="11">11 people</option>
+                                    <option value="12">12 people</option>
+                                </select>
+                                <p class="field-error" id="book-party-error"></p>
+                            </div>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="book-date">Date</label>
+                                <input class="input" id="book-date" name="date" type="date"
+                                       aria-describedby="book-date-hint book-date-error" required>
+                                <p class="field-hint" id="book-date-hint">Today, or any day in the next 60.</p>
+                                <p class="field-error" id="book-date-error"></p>
+                            </div>
+
+                            <div class="field">
+                                <label for="book-time">Arriving at</label>
+                                <select class="input" id="book-time" name="time"
+                                        aria-describedby="book-time-error">
+                                    <option value="">Choose a date first</option>
+                                </select>
+                                <p class="field-error" id="book-time-error"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <p class="slot-title" id="slot-grid-label">Times still open</p>
+                            <div class="slot-grid" id="slot-grid" role="group" aria-labelledby="slot-grid-label" hidden></div>
+                            <p class="field-hint" id="book-status" role="status" aria-live="polite">
+                                Choose a date to see what is free.
+                            </p>
+                        </div>
+
+                        <div class="field">
+                            <label for="book-notes">Anything we should know? <span class="optional">(optional)</span></label>
+                            <textarea class="input" id="book-notes" name="notes" rows="3"
+                                      placeholder="One high chair, and we would rather not sit by the grill."
+                                      aria-describedby="book-notes-error"></textarea>
+                            <p class="field-error" id="book-notes-error"></p>
+                        </div>
+
+                        <button class="button button--primary" type="submit" disabled>Book the table</button>
+                        <p class="form-note"
+                           data-server-text="A table is held for ninety minutes from the time you pick. Cancel it any time with your reference and email.">
+                            Nothing is sent anywhere: the request is written to this browser so you
+                            have the details to hand.
+                        </p>
+                    </form>
+
+                    <div class="form-success" id="book-success" tabindex="-1" hidden>
+                        <h2>That is noted, <span id="book-success-name">friend</span></h2>
+                        <p>
+                            Reference <strong id="book-reference">UF-000000</strong>
+                            &#8212; <span id="book-summary"></span>
+                        </p>
+                        <p id="book-success-note"
+                           data-server-text="Quote that reference when you arrive. It is also how you cancel, using the panel to the right.">
+                            This is a local record only, so please confirm with the restaurant
+                            before you travel.
+                        </p>
+                        <button class="button button--ghost button--small" type="button" id="book-again">
+                            Book another table
+                        </button>
+                    </div>
+                </section>
+                <aside class="book-side">
+                    <section class="panel book-card" id="my-bookings" aria-labelledby="my-bookings-title" hidden>
+                        <h2 class="book-card-title" id="my-bookings-title">Your bookings</h2>
+                        <ul class="booking-list" id="my-bookings-list"></ul>
+                        <p class="form-note" id="my-bookings-empty" hidden>
+                            Nothing booked under this account yet.
+                        </p>
+                    </section>
+
+                    <section class="panel book-card" aria-labelledby="lookup-title">
+                        <h2 class="book-card-title" id="lookup-title">Find a booking</h2>
+                        <p class="book-card-text">
+                            The reference from your confirmation, and the email it was booked with.
+                            Both, because a reference on its own is not a password.
+                        </p>
+
+                        <form id="lookup-form" action="book.html" method="get" novalidate>
+                            <div class="field">
+                                <label for="lookup-reference">Reference</label>
+                                <input class="input" id="lookup-reference" name="reference" type="text"
+                                       autocomplete="off" spellcheck="false" placeholder="UF-4K7QMR"
+                                       aria-describedby="lookup-reference-error">
+                                <p class="field-error" id="lookup-reference-error"></p>
+                            </div>
+
+                            <div class="field">
+                                <label for="lookup-email">Email</label>
+                                <input class="input" id="lookup-email" name="email" type="email"
+                                       autocomplete="email" placeholder="you@example.com"
+                                       aria-describedby="lookup-email-error">
+                                <p class="field-error" id="lookup-email-error"></p>
+                            </div>
+
+                            <button class="button button--ghost button--small" type="submit" disabled>Find it</button>
+                        </form>
+
+                        <div class="lookup-result" id="lookup-result" tabindex="-1" hidden>
+                            <dl class="book-facts" id="lookup-detail"></dl>
+                            <button class="button button--ghost button--small" type="button" id="lookup-cancel">
+                                Cancel this booking
+                            </button>
+                        </div>
+                    </section>
+                    <section class="panel book-card" aria-labelledby="book-rules-title">
+                        <h2 class="book-card-title" id="book-rules-title">How service runs</h2>
+                        <dl class="book-facts">
+                            <div>
+                                <dt>Covers</dt>
+                                <dd>32</dd>
+                            </div>
+                            <div>
+                                <dt>A table is yours for</dt>
+                                <dd>90 minutes</dd>
+                            </div>
+                            <div>
+                                <dt>Largest party online</dt>
+                                <dd>12</dd>
+                            </div>
+                            <div>
+                                <dt>First seating</dt>
+                                <dd>11:00</dd>
+                            </div>
+                            <div>
+                                <dt>Last seating</dt>
+                                <dd>21:00&#8211;23:00</dd>
+                            </div>
+                        </dl>
+                        <p class="book-card-text">
+                            Bigger than twelve, or a whole-room booking, is a conversation rather
+                            than a form &#8212; <a class="text-link" href="contact.html">send an enquiry</a>
+                            and we will work it out.
+                        </p>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="shell">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <p class="footer-brand"><span class="brand-mark" aria-hidden="true"></span>Urban Flame</p>
+                    <p>12 Ember Lane, Indiranagar<br>Bengaluru 560038</p>
+                    <p>Kitchen open from 11:00, every day</p>
+                </div>
+
+                <div class="footer-col">
+                    <h2>Explore</h2>
+                    <ul>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html">Book a table</a></li>
+                        <li><a href="aboutus.html">About us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="signup.html">Create an account</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h2>Demo contact</h2>
+                    <p>Demo phone: not connected</p>
+                    <p>Demo email: not connected</p>
+                    <p>Social profiles will appear when the restaurant is live.</p>
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <p>&copy; <span data-year>2026</span> Urban Flame. All rights reserved.</p>
+                <p data-server-text="Demo project. Accounts, bookings and enquiries are kept on the server.">Demo project. Accounts, bookings and enquiries stay in this browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

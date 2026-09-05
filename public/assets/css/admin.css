@@ -1,0 +1,173 @@
+/* ==========================================================================
+   Urban Flame - staff service pass (bookings for one service, enquiry inbox)
+   Requires css/site.css. Not linked from the public site.
+   ========================================================================== */
+
+/* Shown until the API answers and the account turns out to be on the staff
+   list, so it is the first thing a stray visitor reads. Deliberately plain: it
+   should look like a closed door, not a broken page. */
+.admin-gate {
+  max-width: 640px;
+}
+
+.admin-gate-text {
+  margin-bottom: 4px;
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+/* The pass is scanned top to bottom during service and the inbox is not, so
+   the pass gets the wider column. */
+.admin-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 1fr);
+  gap: 40px;
+  align-items: start;
+}
+
+.admin-card-title {
+  margin-bottom: 14px;
+  font-family: var(--font-display);
+  font-size: 26px;
+}
+
+/* The date and the button sit on one line where there is room, because loading
+   a different service is a two-second job done mid-shift. */
+.admin-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  margin-bottom: 16px;
+}
+
+.admin-form .field {
+  flex: 1 1 190px;
+  margin-bottom: 0;
+}
+
+.admin-filter {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.admin-filter input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--brand);
+}
+
+.admin-filter label {
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.admin-summary {
+  margin-bottom: 14px;
+  color: var(--text-faint);
+  font-size: 13px;
+}
+
+/* Lists ----------------------------------------------------------------- */
+
+.pass-list,
+.inbox-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.pass-list li,
+.inbox-list li {
+  display: grid;
+  gap: 3px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.pass-list:empty,
+.inbox-list:empty {
+  display: none;
+}
+
+/* The arrival time is what the pass is sorted and read by, so it is the only
+   line given weight. */
+.pass-when {
+  color: var(--brand-soft);
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.pass-who {
+  font-size: 15px;
+}
+
+.pass-meta {
+  color: var(--text-faint);
+  font-size: 13px;
+  /* Phone numbers, addresses and references, so it has to be able to break
+     anywhere rather than push the card wide. */
+  overflow-wrap: anywhere;
+}
+
+.pass-note {
+  padding-left: 10px;
+  margin-top: 2px;
+  color: var(--text-dim);
+  font-size: 14px;
+  border-left: 2px solid rgba(255, 114, 0, 0.55);
+}
+
+.inbox-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.inbox-topic {
+  color: var(--brand-soft);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.inbox-when {
+  color: var(--text-faint);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.inbox-message {
+  margin-top: 2px;
+  color: var(--text-dim);
+  font-size: 14px;
+  white-space: pre-line;
+}
+
+.inbox-list .button {
+  justify-self: start;
+  margin-top: 6px;
+}
+
+/* An answered enquiry stays in the list so the count does not jump, but it
+   stops competing for attention with the ones still waiting. */
+.inbox-list li.is-handled {
+  opacity: 0.62;
+}
+
+@media (max-width: 980px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

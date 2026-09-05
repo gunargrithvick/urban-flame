@@ -1,0 +1,218 @@
+/* ==========================================================================
+   Urban Flame - menu page (filters, categories, dish cards)
+   Requires css/site.css.
+   ========================================================================== */
+
+.menu-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  margin-bottom: 34px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  min-height: 38px;
+  padding: 8px 16px;
+  color: var(--text-dim);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: color 0.2s var(--ease), background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.chip:hover {
+  color: var(--text);
+  border-color: var(--line-hover);
+}
+
+.chip[aria-pressed="true"] {
+  color: var(--on-brand);
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.menu-status {
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+/* Categories ------------------------------------------------------------ */
+
+.menu-category {
+  margin-bottom: 44px;
+  scroll-margin-top: 96px;
+}
+
+.category-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  align-items: baseline;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 114, 0, 0.55);
+}
+
+.category-title {
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.2vw, 30px);
+  font-weight: 700;
+}
+
+.category-note {
+  color: var(--text-faint);
+  font-size: 14px;
+}
+
+/* min(320px, 100%) rather than a bare 320px: on a 320px-wide phone the shell
+   leaves ~288px of content box, and a hard 320px minimum would push a track
+   wider than its container and give the whole page a horizontal scrollbar. */
+.menu-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 14px;
+  list-style: none;
+}
+
+.menu-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.25s var(--ease);
+}
+
+.menu-item:hover {
+  border-color: rgba(255, 114, 0, 0.45);
+}
+
+.item-head {
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.item-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.item-price {
+  flex-shrink: 0;
+  color: var(--brand);
+  font-size: 17px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.item-description {
+  color: var(--text-dim);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+  list-style: none;
+}
+
+.tag {
+  padding: 3px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid;
+  border-radius: var(--radius-pill);
+}
+
+.tag--veg {
+  color: #7fdca4;
+  border-color: rgba(127, 220, 164, 0.4);
+}
+
+.tag--spicy {
+  color: #ff9c8a;
+  border-color: rgba(255, 156, 138, 0.4);
+}
+
+.tag--popular {
+  color: var(--brand-soft);
+  border-color: rgba(255, 161, 77, 0.45);
+}
+
+/* Empty state ----------------------------------------------------------- */
+
+.menu-empty {
+  padding: 44px 24px;
+  text-align: center;
+  background: var(--panel);
+  border: 1px dashed var(--line-hover);
+  border-radius: var(--radius);
+}
+
+.menu-empty h2 {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: 24px;
+}
+
+.menu-empty p {
+  max-width: 44ch;
+  margin: 0 auto 18px;
+  color: var(--text-dim);
+}
+
+.menu-footnote {
+  margin-top: 12px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  color: var(--text-faint);
+  font-size: 13.5px;
+}
+
+@media (max-width: 700px) {
+  .menu-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Whether a note fitted beside its title used to depend on how long that
+     particular note was, so on a phone four categories stacked and two did
+     not. Below the same width the toolbar goes vertical, every note takes its
+     own line - the 4px row gap above was written for this state. */
+  .category-note {
+    flex-basis: 100%;
+  }
+
+  .menu-items {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Urban Flame - sign up page
+   Requires css/site.css.
+   ========================================================================== */
+
+.signup-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+  max-width: 940px;
+  margin-inline: auto;
+}
+
+.signup-panel h1 {
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+  font-size: 30px;
+}
+
+.signup-panel > p:first-of-type {
+  margin-bottom: 24px;
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+.signup-panel .button {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.signup-aside {
+  padding-top: 8px;
+}
+
+.signup-aside h2 {
+  margin-bottom: 16px;
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: 26px;
+}
+
+.benefits {
+  display: grid;
+  gap: 18px;
+  list-style: none;
+}
+
+.benefits li {
+  padding-left: 34px;
+  position: relative;
+  color: var(--text-dim);
+}
+
+.benefits li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+  background: var(--brand);
+  -webkit-mask: var(--icon-flame) center / contain no-repeat;
+  mask: var(--icon-flame) center / contain no-repeat;
+}
+
+.benefits strong {
+  display: block;
+  color: var(--text);
+  font-size: 16px;
+}
+
+.signup-aside .disclaimer {
+  margin-top: 28px;
+  padding: 16px 18px;
+  color: var(--text-faint);
+  font-size: 13.5px;
+  line-height: 1.6;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+@media (max-width: 900px) {
+  .signup-layout {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    max-width: 480px;
+  }
+}

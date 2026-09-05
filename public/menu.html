@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu &#8211; Urban Flame</title>
+    <meta name="description" content="The full Urban Flame menu: charcoal grills, small plates, mains, breads, desserts and drinks, with prices in rupees. Filter by course or search by dish.">
+    <meta name="theme-color" content="#ff7200">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Urban Flame">
+    <meta property="og:title" content="Menu &#8211; Urban Flame">
+    <meta property="og:description" content="Charcoal grills, small plates and mains, cooked to order in Indiranagar.">
+    <meta property="og:image" content="assets/img/biryani.jpg">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/menu.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true"></span>Urban Flame
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
+
+            <div class="site-nav" id="site-nav">
+                <nav aria-label="Main">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html" aria-current="page">Menu</a></li>
+                        <li><a href="book.html">Book</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <form class="search" id="search-form" role="search" action="menu.html" method="get">
+                    <label class="sr-only" for="site-search">Search the menu</label>
+                    <input class="srch" id="site-search" type="search" name="q" placeholder="Search" autocomplete="off">
+                    <button class="srch-go" type="submit"><span class="sr-only">Search</span></button>
+                </form>
+
+                <div class="session" id="session" hidden></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="shell page">
+            <header class="page-header">
+                <p class="eyebrow">Kitchen</p>
+                <h1 class="page-title">The menu</h1>
+                <p class="page-intro">
+                    Thirty-three dishes, changed a few times a year. Filter by course or type
+                    a dish name in the search box &#8212; the list narrows as you type.
+                </p>
+            </header>
+
+            <div class="menu-toolbar">
+                <div class="chips" id="menu-chips" role="group" aria-label="Filter by course"></div>
+                <p class="menu-status" id="menu-status" role="status"></p>
+            </div>
+            <noscript>
+                <p class="menu-footnote">Search and course filters require JavaScript; the complete menu is shown here.</p>
+            </noscript>
+
+            <div id="menu-list">
+                <section class="menu-category" id="flame" data-category="flame" data-label="From the Flame">
+                    <div class="category-head">
+                        <h2 class="category-title">From the Flame</h2>
+                        <p class="category-note">Cooked over lump charcoal, carved to order.</p>
+                    </div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Coal-Roast Half Chicken</h3>
+                                <p class="item-price">&#8377;520</p>
+                            </div>
+                            <p class="item-description">
+                                Brined overnight, rubbed with Byadgi chilli and garlic, roasted
+                                on the bone. Served with burnt-lime butter.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--popular">Most ordered</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Grilled Paneer Tikka</h3>
+                                <p class="item-price">&#8377;430</p>
+                            </div>
+                            <p class="item-description">
+                                Thick-cut paneer in a hung-curd marinade with kasuri methi,
+                                charred until the edges blister. Comes with butter naan.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Coorg Pork Ribs</h3>
+                                <p class="item-price">&#8377;620</p>
+                            </div>
+                            <p class="item-description">
+                                Slow-cooked in kachampuli vinegar and black pepper, then finished
+                                over the coals so the glaze catches.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--spicy">Hot</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Malabar Prawns</h3>
+                                <p class="item-price">&#8377;580</p>
+                            </div>
+                            <p class="item-description">
+                                Tiger prawns split and grilled in coconut oil, curry leaf and
+                                green chilli. Whatever came off the boat that morning.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--spicy">Hot</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Charred Cauliflower Steak</h3>
+                                <p class="item-price">&#8377;390</p>
+                            </div>
+                            <p class="item-description">
+                                A whole cross-cut of cauliflower, grilled hard, dressed with
+                                tamarind glaze, curd and toasted peanuts.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                                <li class="tag tag--popular">Most ordered</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Seekh Kebab Platter</h3>
+                                <p class="item-price">&#8377;490</p>
+                            </div>
+                            <p class="item-description">
+                                Hand-minced mutton seekh with mint chutney, sliced onion and
+                                a warm roomali roti.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--spicy">Hot</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section class="menu-category" id="starters" data-category="starters" data-label="Small Plates">
+                    <div class="category-head">
+                        <h2 class="category-title">Small Plates</h2>
+                        <p class="category-note">Made for the middle of the table.</p>
+                    </div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Chicken Manchurian</h3>
+                                <p class="item-price">&#8377;340</p>
+                            </div>
+                            <p class="item-description">
+                                Our one concession to nostalgia. Crisp fried chicken tossed in
+                                a dark garlic and soy glaze with spring onion.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--popular">Most ordered</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Gunpowder Potatoes</h3>
+                                <p class="item-price">&#8377;260</p>
+                            </div>
+                            <p class="item-description">
+                                Baby potatoes crushed, fried and rolled in idli milagai podi
+                                with fried curry leaf.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                                <li class="tag tag--spicy">Hot</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Ember Corn Ribs</h3>
+                                <p class="item-price">&#8377;280</p>
+                            </div>
+                            <p class="item-description">
+                                Quartered corn cobs grilled until they curl, brushed with chilli
+                                butter and lime.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Kane Fry</h3>
+                                <p class="item-price">&#8377;360</p>
+                            </div>
+                            <p class="item-description">
+                                Lady fish in a fine rava crust, shallow fried, with onion salad
+                                and a wedge of lime.
+                            </p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Beetroot Kebab</h3>
+                                <p class="item-price">&#8377;290</p>
+                            </div>
+                            <p class="item-description">
+                                Beetroot, chana dal and roasted cumin, pan-crisped and served
+                                with a walnut chutney.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Pepper Chicken Fry</h3>
+                                <p class="item-price">&#8377;330</p>
+                            </div>
+                            <p class="item-description">
+                                Boneless thigh tossed in coarse Malabar pepper, shallots and
+                                coconut slivers.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--spicy">Hot</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section class="menu-category" id="mains" data-category="mains" data-label="Mains">
+                    <div class="category-head">
+                        <h2 class="category-title">Mains</h2>
+                        <p class="category-note">One plate, one person &#8212; order breads alongside.</p>
+                    </div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Dum Biryani</h3>
+                                <p class="item-price">&#8377;540</p>
+                            </div>
+                            <p class="item-description">
+                                Seeraga samba rice layered with chicken, sealed with dough and
+                                finished on coals. Served with raita and salan.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--popular">Most ordered</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Coorg Mushroom Curry</h3>
+                                <p class="item-price">&#8377;420</p>
+                            </div>
+                            <p class="item-description">
+                                Button and oyster mushrooms in a coconut and black pepper gravy,
+                                heavy on the pepper. Best with kadak roti.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                                <li class="tag tag--spicy">Hot</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Mutton Sukka</h3>
+                                <p class="item-price">&#8377;610</p>
+                            </div>
+                            <p class="item-description">
+                                Shoulder cooked down dry with roasted coconut and star anise
+                                until the masala clings to the meat.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--spicy">Hot</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Meen Moilee</h3>
+                                <p class="item-price">&#8377;560</p>
+                            </div>
+                            <p class="item-description">
+                                Seer fish poached in thin coconut milk with raw mango and green
+                                chilli. Mild, sour, meant for rice.
+                            </p>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Dal Ember</h3>
+                                <p class="item-price">&#8377;360</p>
+                            </div>
+                            <p class="item-description">
+                                Urad dal cooked eight hours over a low flame, smoked with a
+                                coal at the end, finished with white butter.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                                <li class="tag tag--popular">Most ordered</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Paneer Butter Masala</h3>
+                                <p class="item-price">&#8377;440</p>
+                            </div>
+                            <p class="item-description">
+                                Roasted tomato and cashew gravy, cooked slow so it turns sweet
+                                rather than sharp. Grilled paneer folded in at the end.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Vegetable Pulao</h3>
+                                <p class="item-price">&#8377;380</p>
+                            </div>
+                            <p class="item-description">
+                                Basmati with beans, carrot and green peas, cooked in a light
+                                stock with whole spices. Served with curd.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section class="menu-category" id="breads" data-category="breads" data-label="Breads &amp; Rice">
+                    <div class="category-head">
+                        <h2 class="category-title">Breads &amp; Rice</h2>
+                        <p class="category-note">All breads come off the same fire.</p>
+                    </div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Butter Naan</h3>
+                                <p class="item-price">&#8377;90</p>
+                            </div>
+                            <p class="item-description">
+                                Pulled thin, slapped into the tandoor, brushed with white butter
+                                as it comes out.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Garlic Kulcha</h3>
+                                <p class="item-price">&#8377;110</p>
+                            </div>
+                            <p class="item-description">
+                                Stuffed with confit garlic and coriander, folded twice so it
+                                stays layered.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Kadak Roti</h3>
+                                <p class="item-price">&#8377;80</p>
+                            </div>
+                            <p class="item-description">
+                                Wholewheat, rolled paper thin and left on the grill until it
+                                snaps. Good with anything wet.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Steamed Rice</h3>
+                                <p class="item-price">&#8377;140</p>
+                            </div>
+                            <p class="item-description">
+                                Sona masuri, cooked plain. A bowl is enough for two if you are
+                                sharing curries.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Burnt Garlic Rice</h3>
+                                <p class="item-price">&#8377;190</p>
+                            </div>
+                            <p class="item-description">
+                                Short grain rice tossed hard in a wok with fried garlic, pepper
+                                and spring onion.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                <section class="menu-category" id="desserts" data-category="desserts" data-label="Desserts">
+                    <div class="category-head">
+                        <h2 class="category-title">Desserts</h2>
+                        <p class="category-note">Four of them, and they do not change.</p>
+                    </div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Charred Pineapple</h3>
+                                <p class="item-price">&#8377;240</p>
+                            </div>
+                            <p class="item-description">
+                                Grilled over the dying coals with jaggery and black pepper,
+                                served with vanilla ice cream.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                                <li class="tag tag--popular">Most ordered</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Filter Coffee Kulfi</h3>
+                                <p class="item-price">&#8377;220</p>
+                            </div>
+                            <p class="item-description">
+                                Reduced milk set with strong decoction, cut into slabs and
+                                dusted with roasted chicory.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Bebinca</h3>
+                                <p class="item-price">&#8377;260</p>
+                            </div>
+                            <p class="item-description">
+                                Seven layers, one at a time, coconut and nutmeg. Made on
+                                Wednesdays and it runs out.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Dark Chocolate Pot</h3>
+                                <p class="item-price">&#8377;250</p>
+                            </div>
+                            <p class="item-description">
+                                Single-origin Idukki chocolate, sea salt, a spoon of olive oil.
+                                Served cold in a small pot.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="menu-category" id="drinks" data-category="drinks" data-label="Drinks">
+                    <div class="category-head">
+                        <h2 class="category-title">Drinks</h2>
+                        <p class="category-note">No alcohol service &#8212; the licence is pending.</p>
+                    </div>
+                    <ul class="menu-items">
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Smoked Lemonade</h3>
+                                <p class="item-price">&#8377;180</p>
+                            </div>
+                            <p class="item-description">
+                                Lemons halved and grilled before juicing, sweetened with palm
+                                jaggery, topped with soda.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                                <li class="tag tag--popular">Most ordered</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Filter Coffee</h3>
+                                <p class="item-price">&#8377;90</p>
+                            </div>
+                            <p class="item-description">
+                                Decoction pulled to order, 60:40 with hot milk, served in a
+                                steel tumbler.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Masala Chaas</h3>
+                                <p class="item-price">&#8377;120</p>
+                            </div>
+                            <p class="item-description">
+                                Thin buttermilk with ginger, green chilli and curry leaf.
+                                Salted, not sweet.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Nannari Sherbet</h3>
+                                <p class="item-price">&#8377;150</p>
+                            </div>
+                            <p class="item-description">
+                                Sarsaparilla root syrup, lime and basil seed over crushed ice.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                        <li class="menu-item">
+                            <div class="item-head">
+                                <h3 class="item-name">Cold Brew Toddy</h3>
+                                <p class="item-price">&#8377;200</p>
+                            </div>
+                            <p class="item-description">
+                                Sixteen-hour cold brew shaken with coconut water and a pinch
+                                of salt. Non-alcoholic despite the name.
+                            </p>
+                            <ul class="item-tags">
+                                <li class="tag tag--veg">Vegetarian</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+            <div class="menu-empty" id="menu-empty" hidden>
+                <h2>Nothing matches <span id="menu-empty-term">that filter</span></h2>
+                <p>
+                    Try a shorter word &#8212; or clear the filters to see all thirty-three dishes
+                    again.
+                </p>
+                <button class="button button--primary button--small" type="button" id="menu-reset">
+                    Clear filters
+                </button>
+            </div>
+
+            <p class="menu-footnote">
+                Prices are in rupees and include taxes. Tell your server about allergies before
+                you order &#8212; the grill is shared, so we cannot promise a dish is free of any
+                particular ingredient.
+            </p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <p class="footer-brand"><span class="brand-mark" aria-hidden="true"></span>Urban Flame</p>
+                    <p>12 Ember Lane, Indiranagar<br>Bengaluru 560038</p>
+                    <p>Kitchen open from 11:00, every day</p>
+                </div>
+
+                <div class="footer-col">
+                    <h2>Explore</h2>
+                    <ul>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html">Book a table</a></li>
+                        <li><a href="aboutus.html">About us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="signup.html">Create an account</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h2>Demo contact</h2>
+                    <p>Demo phone: not connected</p>
+                    <p>Demo email: not connected</p>
+                    <p>Social profiles will appear when the restaurant is live.</p>
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <p>&copy; <span data-year>2026</span> Urban Flame. All rights reserved.</p>
+                <p data-server-text="Demo project. Accounts, bookings and enquiries are kept on the server.">Demo project. Accounts, bookings and enquiries stay in this browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an account &#8211; Urban Flame</title>
+    <meta name="description" content="Create an Urban Flame account so your name, email and phone are ready when you book a table or send an enquiry. Five fields, no verification email.">
+    <meta name="theme-color" content="#ff7200">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Urban Flame">
+    <meta property="og:title" content="Create an account &#8211; Urban Flame">
+    <meta property="og:description" content="One short form, and your details are ready the next time you book a table at Urban Flame.">
+    <meta property="og:image" content="assets/img/interior-bar.jpg">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/signup.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true"></span>Urban Flame
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
+
+            <div class="site-nav" id="site-nav">
+                <nav aria-label="Main">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html">Book</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <form class="search" id="search-form" role="search" action="menu.html" method="get">
+                    <label class="sr-only" for="site-search">Search the menu</label>
+                    <input class="srch" id="site-search" type="search" name="q" placeholder="Search" autocomplete="off">
+                    <button class="srch-go" type="submit"><span class="sr-only">Search</span></button>
+                </form>
+
+                <div class="session" id="session" hidden></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="shell page">
+            <div class="signup-layout">
+                <section class="signup-panel panel">
+                    <h1>Create an account</h1>
+                    <p>
+                        Keep your details ready the next time you book a table or send an enquiry.
+                        Five fields, no verification email.
+                    </p>
+
+                    <form id="signup-form" action="signup.html" method="post" novalidate>
+                        <noscript><p class="form-note">JavaScript is required for this form; nothing is submitted without it.</p></noscript>
+                        <div class="field">
+                            <label for="signup-name">Full name</label>
+                            <input class="input" id="signup-name" name="name" type="text"
+                                   autocomplete="name" placeholder="Asha Menon"
+                                   aria-describedby="signup-name-error" required>
+                            <p class="field-error" id="signup-name-error"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="signup-email">Email</label>
+                            <input class="input" id="signup-email" name="email" type="email"
+                                   autocomplete="email" placeholder="you@example.com"
+                                   aria-describedby="signup-email-error" required>
+                            <p class="field-error" id="signup-email-error"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="signup-phone">Phone <span class="optional">(optional)</span></label>
+                            <input class="input" id="signup-phone" name="phone" type="tel"
+                                   autocomplete="tel" placeholder="+91 98450 00000"
+                                   aria-describedby="signup-phone-hint signup-phone-error">
+                            <p class="field-hint" id="signup-phone-hint" data-server-text="So the kitchen can reach you about a booking. Optional.">Kept with your account in this browser. Optional.</p>
+                            <p class="field-error" id="signup-phone-error"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="signup-password">Password</label>
+                            <input class="input" id="signup-password" name="password" type="password"
+                                   autocomplete="new-password" placeholder="At least 8 characters"
+                                   aria-describedby="signup-password-hint signup-password-error" required>
+                            <div class="meter" id="password-meter" data-score="0" aria-hidden="true">
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                            <p class="field-hint" id="signup-password-hint">
+                                Eight characters or more, with upper- and lower-case letters, one number and one symbol.
+                            </p>
+                            <p class="field-error" id="signup-password-error"></p>
+                        </div>
+
+                        <div class="field">
+                            <label for="signup-confirm">Confirm password</label>
+                            <input class="input" id="signup-confirm" name="confirm" type="password"
+                                   autocomplete="new-password" placeholder="Type it again"
+                                   aria-describedby="signup-confirm-error" required>
+                            <p class="field-error" id="signup-confirm-error"></p>
+                        </div>
+
+                        <button class="button button--primary" type="submit" disabled>Create account</button>
+                    </form>
+
+                    <p class="form-note">
+                        Already registered? <a class="text-link" href="index.html#login">Log in from the home page</a>.
+                    </p>
+                </section>
+                <aside class="signup-aside">
+                    <h2>What an account gets you</h2>
+                    <ul class="benefits">
+                        <li>
+                            <strong>Pre-filled enquiries</strong>
+                            The contact form arrives with your name and email already in it.
+                        </li>
+                        <li>
+                            <strong>One less thing to type</strong>
+                            Your name, email and number are filled in for you.
+                        </li>
+                        <li>
+                            <strong>Your bookings in one place</strong>
+                            <span data-server-text="Every table you have booked, on any device you sign in from.">Every table you have booked from this browser, on the booking page.</span>
+                        </li>
+                        <li>
+                            <strong>Nothing else</strong>
+                            No marketing list, no third parties, no order tracking.
+                        </li>
+                    </ul>
+
+                    <p class="disclaimer" data-server-text="How your data is stored. Your account lives in the site's database. The password is salted and hashed with PBKDF2 before it is written, and it is never stored or logged in the clear - but this is a portfolio project, so please use a throwaway one anyway.">
+                        <strong>How this copy stores your data.</strong>
+                        This copy of the site has no server. Your account is written to this
+                        browser&#8217;s local storage and never leaves the device, so it will not
+                        follow you to another browser and clearing site data removes it. The
+                        password is salted and hashed before it is stored, but please use a
+                        throwaway one anyway.
+                    </p>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <p class="footer-brand"><span class="brand-mark" aria-hidden="true"></span>Urban Flame</p>
+                    <p>12 Ember Lane, Indiranagar<br>Bengaluru 560038</p>
+                    <p>Kitchen open from 11:00, every day</p>
+                </div>
+
+                <div class="footer-col">
+                    <h2>Explore</h2>
+                    <ul>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html">Book a table</a></li>
+                        <li><a href="aboutus.html">About us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="signup.html">Create an account</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h2>Demo contact</h2>
+                    <p>Demo phone: not connected</p>
+                    <p>Demo email: not connected</p>
+                    <p>Social profiles will appear when the restaurant is live.</p>
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <p>&copy; <span data-year>2026</span> Urban Flame. All rights reserved.</p>
+                <p data-server-text="Demo project. Accounts, bookings and enquiries are kept on the server.">Demo project. Accounts, bookings and enquiries stay in this browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

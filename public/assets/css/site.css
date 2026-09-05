@@ -1,0 +1,978 @@
+/* ==========================================================================
+   Urban Flame - shared shell
+   Design tokens, reset, header, footer, buttons, forms, toasts.
+   Loaded by every page before its page-specific stylesheet.
+   ========================================================================== */
+
+:root {
+  /* Brand */
+  --brand: #ff7200;
+  --brand-soft: #ffa14d;
+  --on-brand: #1a1206;
+
+  /* Surfaces */
+  --bg: #100e0c;
+  --panel: rgba(22, 19, 16, 0.82);
+  --panel-raised: rgba(34, 29, 25, 0.94);
+  --line: rgba(255, 255, 255, 0.12);
+  --line-hover: rgba(255, 255, 255, 0.26);
+
+  /* Text - all ratios below checked against --bg (>= 4.5:1) */
+  --text: #f5f3f0;
+  --text-dim: #c9c3bb;
+  --text-faint: #9c948b;
+
+  /* Status */
+  --ok: #6ee7a0;
+  --err: #ff8a7a;
+
+  /* Shape */
+  --radius: 14px;
+  --radius-sm: 8px;
+  --radius-pill: 999px;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  --shadow-sm: 0 6px 18px rgba(0, 0, 0, 0.3);
+
+  /* Rhythm */
+  --shell: 1180px;
+  --gutter: 20px;
+
+  --font: "Helvetica Neue", Arial, "Segoe UI", sans-serif;
+  --font-display: "Times New Roman", Georgia, serif;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   Reset and base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background-color: var(--bg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: linear-gradient(rgba(12, 10, 9, 0.9), rgba(12, 10, 9, 0.96)),
+    url("../img/background.jpg");
+  /* Modern browsers get the WebP; the JPEG rule above stays as the fallback. */
+  background-image: linear-gradient(rgba(12, 10, 9, 0.9), rgba(12, 10, 9, 0.96)),
+    image-set(url("../img/background.webp") type("image/webp"),
+      url("../img/background.jpg") type("image/jpeg"));
+}
+
+/* iOS Safari renders background-attachment: fixed by scaling the image to the
+   document height, which looks broken on a long page. Pin it only where the
+   viewport does not move under the content. */
+@media (hover: none), (max-width: 720px) {
+  body {
+    background-attachment: scroll;
+    background-position: center top;
+  }
+}
+
+/* height: auto matters. Every <img> here carries width/height attributes for
+   layout stability, and browsers map those to a low-specificity CSS height -
+   so without this, any rule that only sets width leaves the intrinsic pixel
+   height in place and the image stretches. */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility helpers
+   -------------------------------------------------------------------------- */
+
+/* Visible focus ring everywhere. The old stylesheets set outline:none on
+   inputs and buttons, which left keyboard users with no focus indicator. */
+:focus-visible {
+  outline: 3px solid var(--brand-soft);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 200;
+  padding: 10px 18px;
+  color: var(--on-brand);
+  font-weight: 700;
+  text-decoration: none;
+  background: var(--brand);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  transform: translate(-50%, -120%);
+  transition: transform 0.2s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: translate(-50%, 0);
+}
+
+/* The header is sticky and 73px tall, so a jump to #main would otherwise put
+   the first 73px of the page behind it - on the home page that is the whole
+   eyebrow line. .page adds its own 32-48px below this, which is where the
+   breathing room comes from; 80px only has to clear the header. */
+main {
+  scroll-margin-top: 80px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Layout primitives
+   -------------------------------------------------------------------------- */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.page {
+  padding-block: 48px 72px;
+}
+
+.page-header {
+  max-width: 720px;
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  margin-bottom: 10px;
+  color: var(--brand);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 46px);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+}
+
+.page-intro {
+  margin-top: 14px;
+  color: var(--text-dim);
+  font-size: 17px;
+}
+
+.panel {
+  padding: 26px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* --------------------------------------------------------------------------
+   Icons - inlined once here so no page depends on a third-party CDN
+   (the old build pulled ionicons from unpkg, which broke offline).
+   -------------------------------------------------------------------------- */
+
+:root {
+  --icon-menu: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M3 6h18M3 12h18M3 18h18'/%3E%3C/svg%3E");
+  --icon-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M5 5l14 14M19 5L5 19'/%3E%3C/svg%3E");
+  --icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4.8-4.8'/%3E%3C/svg%3E");
+  --icon-flame: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 7.51 4 10.62 4 14c0 4.42 3.58 8 8 8s8-3.58 8-8C20 8.61 17.41 3.8 13.5.67zM11.71 19c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------------------------
+   Header and navigation
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(12, 10, 9, 0.9);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  /* Wrapping is a safety net, not the layout: every child of the header is
+     flex-shrink: 0, so without this an unexpectedly wide one (a long signed-in
+     name, wider font fallbacks on another platform) would push the whole
+     document sideways instead of dropping to a second line. */
+  flex-wrap: wrap;
+  gap: 20px;
+  min-height: 72px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  margin-right: auto;
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brand-mark {
+  width: 26px;
+  height: 26px;
+  background: var(--brand);
+  -webkit-mask: var(--icon-flame) center / contain no-repeat;
+  mask: var(--icon-flame) center / contain no-repeat;
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.nav-toggle::before {
+  content: "";
+  width: 22px;
+  height: 22px;
+  background: currentColor;
+  -webkit-mask: var(--icon-menu) center / contain no-repeat;
+  mask: var(--icon-menu) center / contain no-repeat;
+}
+
+.nav-toggle[aria-expanded="true"]::before {
+  -webkit-mask-image: var(--icon-close);
+  mask-image: var(--icon-close);
+}
+
+.nav-toggle:hover {
+  border-color: var(--brand);
+  color: var(--brand-soft);
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+}
+
+.nav-links a {
+  position: relative;
+  display: block;
+  padding-block: 6px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s var(--ease);
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--brand);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease);
+}
+
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
+  color: var(--brand-soft);
+}
+
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* Search - a real GET form so it can still navigate without JavaScript. */
+.search {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.srch {
+  width: 170px;
+  min-height: 44px;
+  padding: 10px 14px;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-right: none;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.srch::placeholder {
+  color: var(--text-faint);
+}
+
+.srch:focus-visible {
+  outline-offset: -1px;
+  border-color: var(--brand);
+}
+
+/* Icon-only, and not only for looks: a "Search" text label is 85px wide, and
+   the desktop header has to fit brand + nav + search + a signed-in name and a
+   Log out button on one row inside 886px at the 941px toggle breakpoint. The
+   field it sits against is labelled and inside role="search", and the button
+   takes its accessible name from the .sr-only span in the markup. */
+.srch-go {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+  color: var(--on-brand);
+  background: var(--brand);
+  border: 1px solid var(--brand);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease);
+}
+
+.srch-go::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  -webkit-mask: var(--icon-search) center / contain no-repeat;
+  mask: var(--icon-search) center / contain no-repeat;
+}
+
+.srch-go:hover {
+  background: var(--brand-soft);
+  border-color: var(--brand-soft);
+}
+
+/* Signed-in state, rendered into the header by js/main.js */
+.session {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.session-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  /* Bounds the widest thing in the header that comes from user input. Anything
+     longer ellipsises rather than pushing the header onto a second row - see
+     the compact-header note in the responsive section. */
+  max-width: 160px;
+  padding: 6px 14px 6px 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.session-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--on-brand);
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--brand);
+  border-radius: 50%;
+}
+
+/* --------------------------------------------------------------------------
+   Buttons and links
+   -------------------------------------------------------------------------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 11px 24px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease),
+    color 0.25s var(--ease), transform 0.15s var(--ease);
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--primary {
+  color: var(--on-brand);
+  background: var(--brand);
+}
+
+.button--primary:hover {
+  background: var(--brand-soft);
+}
+
+.button--ghost {
+  color: var(--text);
+  background: transparent;
+  border-color: var(--line);
+}
+
+.button--ghost:hover {
+  color: var(--brand-soft);
+  border-color: var(--brand);
+}
+
+.button--small {
+  min-height: 38px;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.button[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.text-link {
+  color: var(--brand-soft);
+  text-decoration-color: rgba(255, 161, 77, 0.5);
+  text-underline-offset: 3px;
+}
+
+.text-link:hover {
+  color: var(--brand);
+}
+
+/* --------------------------------------------------------------------------
+   Forms
+   -------------------------------------------------------------------------- */
+
+.field {
+  margin-bottom: 14px;
+}
+
+/* Two short fields side by side once there is room for both, one above the
+   other when there is not - no breakpoint, because the deciding width is the
+   form's, not the viewport's. The same form is 327px wide inside the home
+   page's account card and 659px wide when that card fills a tablet. Row gap
+   comes from .field's own margin, which is why only a column gap is set. */
+.field-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0 16px;
+}
+
+.field > label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.optional {
+  color: var(--text-faint);
+  font-weight: 400;
+  text-transform: none;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  min-height: 46px;
+  padding: 12px 14px;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s var(--ease);
+  /* Where main.js scrolls an invalid field into view (revealBelowHeader). The
+     label sits exactly 27.4px above the input top, so this has to clear the
+     73px header plus the label, not just the header. */
+  scroll-margin-top: 112px;
+}
+
+.input::placeholder {
+  color: var(--text-faint);
+}
+
+.input:hover {
+  border-color: var(--line-hover);
+}
+
+.input:focus-visible {
+  border-color: var(--brand);
+  outline-offset: 1px;
+}
+
+textarea.input {
+  min-height: 130px;
+  resize: vertical;
+}
+
+select.input {
+  appearance: none;
+  background-color: #1b1815;
+}
+
+.input[aria-invalid="true"] {
+  border-color: var(--err);
+}
+
+.field-error {
+  margin-top: 5px;
+  color: var(--err);
+  font-size: 13px;
+}
+
+.field-error:empty {
+  display: none;
+}
+
+.field-hint {
+  margin-top: 5px;
+  color: var(--text-faint);
+  font-size: 13px;
+}
+
+.form-note {
+  margin-top: 16px;
+  color: var(--text-faint);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Password strength meter (sign up) */
+.meter {
+  display: flex;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.meter span {
+  height: 4px;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 2px;
+  transition: background-color 0.25s var(--ease);
+}
+
+.meter[data-score="1"] span:nth-child(-n + 1),
+.meter[data-score="2"] span:nth-child(-n + 2) {
+  background: var(--err);
+}
+
+.meter[data-score="3"] span:nth-child(-n + 3) {
+  background: var(--brand);
+}
+
+.meter[data-score="4"] span {
+  background: var(--ok);
+}
+
+/* --------------------------------------------------------------------------
+   Prose - scoped so body text styling cannot leak into cards or the header
+   (the old about/contact sheets styled bare p, h1 and h3 globally).
+   -------------------------------------------------------------------------- */
+
+.prose h2 {
+  margin-top: 34px;
+  margin-bottom: 10px;
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: 26px;
+}
+
+.prose h3 {
+  margin-top: 26px;
+  margin-bottom: 8px;
+  color: var(--brand-soft);
+  font-size: 19px;
+}
+
+.prose p {
+  margin-bottom: 16px;
+  color: var(--text-dim);
+  max-width: 74ch;
+}
+
+.prose ul {
+  margin: 0 0 16px 20px;
+  color: var(--text-dim);
+}
+
+.prose li {
+  margin-bottom: 6px;
+}
+
+.prose > :first-child {
+  margin-top: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  /* Pins the footer to the bottom on short pages (404, sign up): body is a
+     column flex container, so an auto margin absorbs the leftover height. */
+  margin-top: auto;
+  padding-block: 44px 26px;
+  background: rgba(9, 8, 7, 0.82);
+  border-top: 1px solid var(--line);
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  align-items: start;
+}
+
+.footer-col h2 {
+  margin-bottom: 12px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer-col p {
+  margin-bottom: 6px;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col li {
+  margin-bottom: 6px;
+}
+
+.footer-col a {
+  color: var(--text-dim);
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  color: var(--brand-soft);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: 22px;
+}
+
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  justify-content: space-between;
+  margin-top: 32px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--text-faint);
+  font-size: 13px;
+}
+
+/* 404.html is the only page that puts a link down here, and .footer-col a does
+   not reach it - so without this it fell through to the browser default: blue
+   on near-black at 2.1:1. Underlined at rest because it sits beside plain
+   legal text rather than in a list of links, so colour alone would not mark it
+   as a link. */
+.footer-legal a {
+  color: var(--text-dim);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-legal a:hover {
+  color: var(--brand-soft);
+}
+
+/* --------------------------------------------------------------------------
+   Toasts - replace the old blocking alert() calls
+   -------------------------------------------------------------------------- */
+
+.toast-stack {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  display: grid;
+  gap: 10px;
+  width: min(360px, calc(100vw - 40px));
+}
+
+.toast {
+  padding: 14px 16px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--brand);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  animation: toast-in 0.28s var(--ease);
+}
+
+.toast--ok {
+  border-left-color: var(--ok);
+}
+
+.toast--error {
+  border-left-color: var(--err);
+}
+
+.toast.is-leaving {
+  animation: toast-out 0.22s var(--ease) forwards;
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@keyframes toast-out {
+  to {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+/* The compact desktop header. Widths are worked out against the signed-in
+   header, which is the wide one - avatar, first name and a Log out button
+   instead of two short links - and against the layout viewport, which a classic
+   scrollbar leaves 15px narrower than the width a media query reports.
+   At the 941px lower edge that is 941 - 15 - 40px of shell padding = 886px for
+   brand 187 + nav 296 + search 140 + session 219 and the three gaps between
+   them: 874px, so 12px spare.
+   The full-width header below needs 1084px, and 1084 + 40 + 15 is why this
+   range runs to 1159px rather than stopping under 1100 as it did when the nav
+   had four items instead of five. End it earlier and the widths in between get
+   the roomier header without the room for it, which is a second row. */
+@media (min-width: 941px) and (max-width: 1159px) {
+  .header-inner {
+    gap: 12px;
+  }
+
+  .site-nav {
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 10px;
+  }
+
+  .srch {
+    width: 96px;
+  }
+
+  /* Tighter than the 160px desktop cap, so the 874px above is the whole
+     budget however long the signed-in name is. */
+  .session-user {
+    max-width: 120px;
+  }
+}
+
+/* 940px, not 900: a classic scrollbar takes 15px off the layout viewport
+   without taking it off what a media query measures, so the one-row header has
+   to fit with that much room to spare. tools/responsive.mjs checks both. */
+@media (max-width: 940px) {
+
+  body {
+    /* Fixed attachment is expensive and jumpy on mobile. */
+    background-attachment: scroll;
+  }
+
+  .header-inner {
+    gap: 12px;
+    padding-block: 12px;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  .site-nav {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    width: 100%;
+    padding-bottom: 16px;
+  }
+
+  .site-nav.is-open {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+  }
+
+  .nav-links a {
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links a::after {
+    display: none;
+  }
+
+  .srch {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .session {
+    flex-wrap: wrap;
+  }
+
+  /* The panel is full width here, so the desktop cap would truncate a name
+     that has room to be shown. 100% keeps a very long one inside the panel
+     instead of widening the document. */
+  .session-user {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  :root {
+    --gutter: 16px;
+  }
+
+  .page {
+    padding-block: 32px 56px;
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .toast-stack {
+    right: 16px;
+    left: 16px;
+    bottom: 16px;
+    width: auto;
+  }
+}

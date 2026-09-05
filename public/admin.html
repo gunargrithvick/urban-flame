@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service pass &#8211; Urban Flame</title>
+    <meta name="description" content="Staff view for Urban Flame: the bookings taken for one service and the enquiries waiting for a reply. Not part of the public site.">
+    <meta name="theme-color" content="#ff7200">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true"></span>Urban Flame
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
+
+            <div class="site-nav" id="site-nav">
+                <nav aria-label="Main">
+                    <ul class="nav-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html">Book</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <form class="search" id="search-form" role="search" action="menu.html" method="get">
+                    <label class="sr-only" for="site-search">Search the menu</label>
+                    <input class="srch" id="site-search" type="search" name="q" placeholder="Search" autocomplete="off">
+                    <button class="srch-go" type="submit"><span class="sr-only">Search</span></button>
+                </form>
+
+                <div class="session" id="session" hidden></div>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <div class="shell page">
+            <header class="page-header">
+                <p class="eyebrow">Staff</p>
+                <h1 class="page-title">Service pass</h1>
+                <p class="page-intro">
+                    Everything booked for one service, and the enquiries nobody has answered
+                    yet. Not linked from the public site and not indexed.
+                </p>
+            </header>
+
+            <section class="panel admin-gate" id="admin-gate" tabindex="-1">
+                <h2 class="admin-card-title" id="admin-gate-title">Nothing to show here</h2>
+                <p class="admin-gate-text" id="admin-gate-text">
+                    This page reads the reservations API, and this copy of the site is not
+                    talking to one.
+                </p>
+                <p class="form-note">
+                    <a class="text-link" href="index.html#login">Sign in on the home page</a>
+                    with an address on the staff list, then come back.
+                </p>
+            </section>
+
+            <div class="admin-layout" id="admin-panel" hidden>
+                <section class="panel admin-card" aria-labelledby="service-title">
+                    <h2 class="admin-card-title" id="service-title">One service</h2>
+
+                    <form class="admin-form" id="service-form" action="admin.html" method="get" novalidate>
+                        <div class="field">
+                            <label for="service-date">Service date</label>
+                            <input class="input" id="service-date" name="date" type="date"
+                                   aria-describedby="service-date-error" required>
+                            <p class="field-error" id="service-date-error"></p>
+                        </div>
+                        <button class="button button--ghost button--small" type="submit" disabled>Load the pass</button>
+                    </form>
+
+                    <p class="admin-summary" id="service-summary" role="status" aria-live="polite">
+                        Pick a date to load the pass.
+                    </p>
+                    <ul class="pass-list" id="service-list"></ul>
+                </section>
+                <section class="panel admin-card" aria-labelledby="inbox-title">
+                    <h2 class="admin-card-title" id="inbox-title">Enquiries</h2>
+
+                    <div class="admin-filter">
+                        <input id="inbox-open-only" type="checkbox">
+                        <label for="inbox-open-only">Only the ones still waiting</label>
+                    </div>
+
+                    <p class="admin-summary" id="inbox-summary" role="status" aria-live="polite">
+                        Loading the inbox&#8230;
+                    </p>
+                    <ul class="inbox-list" id="inbox-list"></ul>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="shell">
+            <div class="footer-legal">
+                <p>&copy; <span data-year>2026</span> Urban Flame. All rights reserved.</p>
+                <p>Staff view. Guest names, addresses and phone numbers are on this page.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

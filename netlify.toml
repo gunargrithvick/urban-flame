@@ -1,0 +1,50 @@
+#  Netlify deploy config.
+#
+#  There is no build step: public/ is served verbatim. The `command` is a no-op
+#  on purpose so Netlify does not guess at a framework. Response headers come
+#  from public/_headers, which Netlify reads out of the publish directory.
+#
+#  The functions in api/ are Vercel-shaped and are not deployed here, so a
+#  Netlify copy of the site has no backend: GET /api/health returns the 404 page,
+#  main.js reads that as "no server" and falls back to localStorage. That is a
+#  supported mode, not a broken deploy - see README.md.
+
+[build]
+  publish = "public"
+  command = "echo 'static site - nothing to build'"
+
+#  Nothing here needs Netlify's asset pipeline: the CSS and JS are already
+#  hand-written to be small, and the images were optimised by tools/optimize_images.py.
+[build.processing]
+  skip_processing = true
+
+#  Short paths worth typing, plus legacy paths from the first version of the
+#  site. These must come before the catch-all below: Netlify evaluates rules
+#  top-down and the first match wins.
+[[redirects]]
+  from = "/about"
+  to = "/aboutus.html"
+  status = 301
+
+[[redirects]]
+  from = "/book"
+  to = "/book.html"
+  status = 301
+
+#  /reservations used to be the contact form. It is a real booking page now.
+[[redirects]]
+  from = "/reservations"
+  to = "/book.html"
+  status = 301
+
+[[redirects]]
+  from = "/register"
+  to = "/signup.html"
+  status = 301
+
+#  Anything else that is not a real file gets the error page with a real 404,
+#  rather than a 200 that search engines would happily index.
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

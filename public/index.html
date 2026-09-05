@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Flame &#8211; Flame-Grilled Dining in Bengaluru</title>
+    <meta name="description" content="Urban Flame is a flame-grill restaurant in Indiranagar, Bengaluru. Browse the short charcoal menu, book one of thirty-two covers, and read how the kitchen works.">
+    <meta name="theme-color" content="#ff7200">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Urban Flame">
+    <meta property="og:title" content="Urban Flame &#8211; Flame-Grilled Dining in Bengaluru">
+    <meta property="og:description" content="Open-flame grilling, local produce and a live kitchen in Indiranagar, Bengaluru.">
+    <meta property="og:image" content="assets/img/interior-dining.jpg">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/index.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="shell header-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark" aria-hidden="true"></span>Urban Flame
+            </a>
+
+            <button class="nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">
+                <span class="sr-only">Menu</span>
+            </button>
+
+            <div class="site-nav" id="site-nav">
+                <nav aria-label="Main">
+                    <ul class="nav-links">
+                        <li><a href="index.html" aria-current="page">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html">Book</a></li>
+                        <li><a href="aboutus.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <form class="search" id="search-form" role="search" action="menu.html" method="get">
+                    <label class="sr-only" for="site-search">Search the menu</label>
+                    <input class="srch" id="site-search" type="search" name="q" placeholder="Search" autocomplete="off">
+                    <button class="srch-go" type="submit"><span class="sr-only">Search</span></button>
+                </form>
+
+                <div class="session" id="session" hidden></div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <div class="shell page">
+            <section class="hero">
+                <div>
+                    <p class="eyebrow">Indiranagar, Bengaluru</p>
+                    <h1 class="hero-title">Food that meets the flame, not the microwave.</h1>
+                    <p class="hero-text">
+                        Urban Flame is a thirty-two cover grill house on Ember Lane. Everything
+                        we serve passes over open charcoal in a kitchen you can see from your
+                        table &#8212; short menu, long marinades, produce bought the same morning.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="button button--primary" href="menu.html">See the menu</a>
+                        <a class="button button--ghost" href="book.html">Book a table</a>
+                    </div>
+                    <dl class="hero-facts">
+                        <div>
+                            <dt>Kitchen</dt>
+                            <dd>From 11:00 daily</dd>
+                        </div>
+                        <div>
+                            <dt>Covers</dt>
+                            <dd>24 seated, 8 at the counter</dd>
+                        </div>
+                        <div>
+                            <dt>Average spend</dt>
+                            <dd>&#8377;900 per person</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <aside class="auth-card panel" id="login" aria-label="Account">
+                    <div id="account-signed-out">
+                        <h2>Log in</h2>
+                        <p class="auth-intro">Sign in to keep your name and number ready for bookings and enquiries.</p>
+                        <form id="login-form" action="index.html" method="post" novalidate>
+                            <noscript><p class="form-note">JavaScript is required for this form; nothing is submitted without it.</p></noscript>
+                            <div class="field-row">
+                                <div class="field">
+                                    <label for="login-email">Email</label>
+                                    <input class="input" id="login-email" name="email" type="email"
+                                           autocomplete="email" placeholder="you@example.com"
+                                           aria-describedby="login-email-error" required>
+                                    <p class="field-error" id="login-email-error"></p>
+                                </div>
+                                <div class="field">
+                                    <label for="login-password">Password</label>
+                                    <input class="input" id="login-password" name="password" type="password"
+                                           autocomplete="current-password" placeholder="Your password"
+                                           aria-describedby="login-password-error" required>
+                                    <p class="field-error" id="login-password-error"></p>
+                                </div>
+                            </div>
+                            <button class="button button--primary" type="submit" disabled>Log in</button>
+                        </form>
+                        <p class="form-note">
+                            No account yet? <a class="text-link" href="signup.html">Create one</a> &#8212;
+                            <span data-server-text="one short form, and your table is two clicks away.">this copy keeps it in your browser.</span>
+                        </p>
+                    </div>
+
+                    <div id="account-signed-in" hidden>
+                        <h2>Your account</h2>
+                        <div class="account-summary">
+                            <span class="avatar" id="account-initials" aria-hidden="true"></span>
+                            <dl>
+                                <dt>Name</dt>
+                                <dd id="account-name"></dd>
+                                <dt>Email</dt>
+                                <dd id="account-email"></dd>
+                                <dt>Member since</dt>
+                                <dd id="account-since"></dd>
+                            </dl>
+                        </div>
+                        <div class="account-actions">
+                            <a class="button button--primary" href="menu.html">Browse the menu</a>
+                            <button class="button button--ghost" type="button" id="account-logout">Log out</button>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+            <section class="section" aria-labelledby="how-title">
+                <h2 class="section-title" id="how-title">How we cook</h2>
+                <p class="section-lead">
+                    Three things decide how a plate tastes here, and none of them are shortcuts.
+                </p>
+                <div class="card-row">
+                    <article class="card">
+                        <p class="card-number">01</p>
+                        <h3>Live charcoal</h3>
+                        <p>
+                            One grill, lump charcoal, no gas assist. The kitchen runs it from
+                            open to close so the bed is always at temperature.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <p class="card-number">02</p>
+                        <h3>Bought that morning</h3>
+                        <p>
+                            Vegetables come from Russell Market, fish from the coast twice a
+                            week. If it did not arrive, it is not on the board that day.
+                        </p>
+                    </article>
+                    <article class="card">
+                        <p class="card-number">03</p>
+                        <h3>Short menu, on purpose</h3>
+                        <p>
+                            Around thirty dishes. Small enough that every one of them gets
+                            tasted and adjusted before service.
+                        </p>
+                    </article>
+                </div>
+            </section>
+            <section class="section" aria-labelledby="gallery-title">
+                <h2 class="section-title" id="gallery-title">The room and the plates</h2>
+                <p class="section-lead">
+                    Photographs from a normal Thursday service &#8212; nothing styled for the camera.
+                </p>
+                <div class="gallery">
+                    <figure>
+                        <picture>
+                            <source type="image/webp" srcset="assets/img/interior-dining.webp">
+                            <img src="assets/img/interior-dining.jpg" width="1200" height="800"
+                                 loading="lazy" decoding="async"
+                                 alt="Dining room with dark timber tables and low pendant lighting">
+                        </picture>
+                        <figcaption>The dining room, set for evening service</figcaption>
+                    </figure>
+                    <figure>
+                        <picture>
+                            <source type="image/webp" srcset="assets/img/interior-bar.webp">
+                            <img src="assets/img/interior-bar.jpg" width="1200" height="800"
+                                 loading="lazy" decoding="async"
+                                 alt="Bar counter with stools and bottles backlit in amber">
+                        </picture>
+                        <figcaption>Eight seats at the counter, facing the grill</figcaption>
+                    </figure>
+                    <figure>
+                        <picture>
+                            <source type="image/webp" srcset="assets/img/biryani.webp">
+                            <img src="assets/img/biryani.jpg" width="1200" height="800"
+                                 loading="lazy" decoding="async"
+                                 alt="Serving of layered biryani with fried onions on top">
+                        </picture>
+                        <figcaption>Dum biryani, sealed and finished over coals</figcaption>
+                    </figure>
+                    <figure>
+                        <picture>
+                            <source type="image/webp" srcset="assets/img/chicken-manchurian.webp">
+                            <img src="assets/img/chicken-manchurian.jpg" width="1200" height="800"
+                                 loading="lazy" decoding="async"
+                                 alt="Bowl of chicken Manchurian in a dark glossy sauce with spring onion">
+                        </picture>
+                        <figcaption>Chicken Manchurian, our one concession to nostalgia</figcaption>
+                    </figure>
+                    <figure>
+                        <picture>
+                            <source type="image/webp" srcset="assets/img/paneer-naan.webp">
+                            <img src="assets/img/paneer-naan.jpg" width="1200" height="800"
+                                 loading="lazy" decoding="async"
+                                 alt="Paneer curry served with charred naan on a metal plate">
+                        </picture>
+                        <figcaption>Grilled paneer with butter naan</figcaption>
+                    </figure>
+                    <figure>
+                        <picture>
+                            <source type="image/webp" srcset="assets/img/mushroom-curry.webp">
+                            <img src="assets/img/mushroom-curry.jpg" width="1200" height="800"
+                                 loading="lazy" decoding="async"
+                                 alt="Mushroom curry in a copper bowl with coriander">
+                        </picture>
+                        <figcaption>Coorg mushroom curry, black pepper heavy</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="section closing" aria-labelledby="closing-title">
+                <h2 class="section-title" id="closing-title">Come in hungry</h2>
+                <p class="section-lead" data-server-text="Walk-ins get the counter. Everyone else can hold one of thirty-two covers in about a minute.">
+                    Walk-ins get the counter. This copy of the site has no reservations server, so
+                    the booking form writes your request to this browser instead of holding a table.
+                </p>
+                <div class="hero-actions">
+                    <a class="button button--primary" href="book.html">Book a table</a>
+                    <a class="button button--ghost" href="aboutus.html">Read our story</a>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="shell">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <p class="footer-brand"><span class="brand-mark" aria-hidden="true"></span>Urban Flame</p>
+                    <p>12 Ember Lane, Indiranagar<br>Bengaluru 560038</p>
+                    <p>Kitchen open from 11:00, every day</p>
+                </div>
+
+                <div class="footer-col">
+                    <h2>Explore</h2>
+                    <ul>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="book.html">Book a table</a></li>
+                        <li><a href="aboutus.html">About us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="signup.html">Create an account</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h2>Demo contact</h2>
+                    <p>Demo phone: not connected</p>
+                    <p>Demo email: not connected</p>
+                    <p>Social profiles will appear when the restaurant is live.</p>
+                </div>
+            </div>
+
+            <div class="footer-legal">
+                <p>&copy; <span data-year>2026</span> Urban Flame. All rights reserved.</p>
+                <p data-server-text="Demo project. Accounts, bookings and enquiries are kept on the server.">Demo project. Accounts, bookings and enquiries stay in this browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

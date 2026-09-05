@@ -1,0 +1,262 @@
+/* ==========================================================================
+   Urban Flame - home page (hero, highlights, gallery, account card)
+   Requires css/site.css.
+   ========================================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 380px);
+  gap: 48px;
+  align-items: start;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 6vw, 62px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: 0.01em;
+}
+
+.hero-text {
+  max-width: 62ch;
+  margin-top: 20px;
+  color: var(--text-dim);
+  font-size: 17px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.hero-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 40px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.hero-facts dt {
+  color: var(--text-faint);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-facts dd {
+  margin-top: 4px;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* Account card ---------------------------------------------------------- */
+
+.auth-card {
+  position: sticky;
+  top: 96px;
+  /* The header's "Log in" link points at index.html#login, and below 980px this
+     card is static - so without this the jump lands its top edge behind the
+     sticky header. Same number as the sticky offset above, which means the jump
+     leaves the card exactly where sticky would pin it. */
+  scroll-margin-top: 96px;
+}
+
+.auth-card h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+}
+
+.auth-intro {
+  margin-top: 6px;
+  margin-bottom: 20px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+
+.account-summary {
+  display: grid;
+  gap: 6px;
+  padding: 18px;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.account-summary .avatar {
+  width: 42px;
+  height: 42px;
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.account-summary dt {
+  color: var(--text-faint);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.account-summary dd {
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+}
+
+.account-summary dd:last-of-type {
+  margin-bottom: 0;
+}
+
+.account-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+/* Highlights ------------------------------------------------------------ */
+
+.section {
+  margin-top: 76px;
+}
+
+/* Sign-off block: centred, and its lead needs the auto margins to match. */
+.closing {
+  padding: 40px 24px;
+  text-align: center;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.closing .section-lead {
+  margin-inline: auto;
+}
+
+.closing .hero-actions {
+  justify-content: center;
+}
+
+.section-title {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.4vw, 34px);
+  color: var(--brand);
+}
+
+.section-lead {
+  max-width: 62ch;
+  margin-bottom: 28px;
+  color: var(--text-dim);
+}
+
+.card-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.card:hover {
+  border-color: rgba(255, 114, 0, 0.45);
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.card p {
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+.card-number {
+  display: block;
+  margin-bottom: 12px;
+  color: var(--brand);
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* Gallery --------------------------------------------------------------- */
+
+/* 320px keeps this at three columns on a desktop container and two on a
+   tablet, so the six photos always fill their rows instead of leaving a
+   four-then-two gap. min() stops that minimum from overflowing a 320px phone,
+   where the shell leaves only ~288px of content box. */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: 18px;
+}
+
+.gallery figure {
+  overflow: hidden;
+  background: var(--panel-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.gallery img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 0.45s var(--ease);
+}
+
+.gallery figure:hover img {
+  transform: scale(1.06);
+}
+
+/* Captions sit under the photo rather than over it: at this tile size an
+   overlaid caption covered a third of the image and never cleared 4.5:1. */
+.gallery figcaption {
+  padding: 12px 14px 14px;
+  color: var(--text-dim);
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+/* Responsive ------------------------------------------------------------ */
+
+@media (max-width: 980px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* Stacked, the card shares its column with the hero copy, so it takes the
+     whole measure. Capping it here instead left a bordered panel stopping
+     short of every other edge on the page - which reads as a mistake in a way
+     a narrow paragraph does not. The login fields go two-up on their own
+     (.field-row), so a wide card is a wide form rather than a stretched one. */
+  .auth-card {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .section {
+    margin-top: 56px;
+  }
+
+  .hero-actions .button {
+    flex: 1 1 100%;
+  }
+}

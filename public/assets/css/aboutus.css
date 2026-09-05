@@ -1,0 +1,112 @@
+/* ==========================================================================
+   Urban Flame - about page
+   Requires css/site.css.
+   ========================================================================== */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 330px);
+  gap: 44px;
+  align-items: start;
+}
+
+.about-media {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.about-media img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.at-a-glance {
+  position: sticky;
+  top: 96px;
+}
+
+.at-a-glance h2 {
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+/* One column per pair on the desktop rail, two or three once the panel is
+   stacked under the prose and has the whole measure - the same auto-fit the
+   media pair and the value list use, so no breakpoint decides it. */
+.at-a-glance dl {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px 24px;
+}
+
+.at-a-glance dt {
+  color: var(--text-faint);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.at-a-glance dd {
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+.at-a-glance .button {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.value-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 28px 0 8px;
+  list-style: none;
+}
+
+.value-list li {
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.value-list h3 {
+  margin-bottom: 6px;
+  color: var(--brand-soft);
+  font-size: 16px;
+}
+
+.value-list p {
+  color: var(--text-dim);
+  font-size: 14.5px;
+}
+
+@media (max-width: 980px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Full measure once stacked, for the reason the home page's account card
+     is: a bordered panel that stops short of the prose above it looks like a
+     layout bug. The list inside spreads into columns by itself, and the
+     button drops back to its label width rather than becoming a 650px bar. */
+  .at-a-glance {
+    position: static;
+  }
+
+  .at-a-glance .button {
+    width: auto;
+  }
+}

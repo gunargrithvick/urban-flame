@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+#  The staff view and the API are for the restaurant, not for search results.
+#  Neither is linked from a public page; this only says so out loud.
+Disallow: /admin.html
+Disallow: /api/

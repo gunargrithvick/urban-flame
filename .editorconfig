@@ -1,0 +1,30 @@
+#  Written to match what the files already do, so opening this repo in a new
+#  editor does not reformat anything on the first save.
+#  https://editorconfig.org
+
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.html]
+indent_size = 4
+
+[*.{css,js,mjs,json,yml,toml}]
+indent_size = 2
+
+[*.py]
+indent_size = 4
+
+#  Markdown uses two trailing spaces for a hard line break.
+[*.md]
+indent_size = 2
+trim_trailing_whitespace = false
+
+#  Netlify's _headers is indentation-sensitive and has no extension.
+[_headers]
+indent_size = 2

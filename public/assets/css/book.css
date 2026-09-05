@@ -1,0 +1,244 @@
+/* ==========================================================================
+   Urban Flame - booking page (availability grid, booking form, lookup)
+   Requires css/site.css.
+   ========================================================================== */
+
+.book-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(300px, 380px);
+  gap: 40px;
+  align-items: start;
+}
+
+.book-side {
+  display: grid;
+  gap: 22px;
+}
+
+.book-card-title {
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+  font-size: 26px;
+}
+
+.book-card .book-card-title {
+  margin-bottom: 10px;
+  color: var(--brand);
+  font-family: var(--font);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.book-card-text {
+  margin-bottom: 14px;
+  color: var(--text-dim);
+  font-size: 15px;
+}
+
+.book-card-text:last-child {
+  margin-bottom: 0;
+}
+
+/* The service facts and the looked-up booking share one term/value layout, so a
+   cancelled reservation reads like the rules it was made under. */
+.book-facts {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.book-facts div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 15px;
+}
+
+.book-facts dt {
+  color: var(--text-dim);
+}
+
+.book-facts dd {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Whether a table can actually be held is the one thing a visitor must not have
+   to guess at, so the sentence that says which mode this copy runs in gets a
+   rule of its own rather than reading as another line of intro. */
+.book-mode {
+  padding-left: 14px;
+  border-left: 2px solid rgba(255, 114, 0, 0.55);
+  font-size: 16px;
+}
+
+/* Availability grid ----------------------------------------------------- */
+
+.slot-title {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+/* auto-fill, not auto-fit: an empty track is better than five slots stretched
+   across a desktop row, because the grid is read as a timetable. */
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(104px, 1fr));
+  gap: 8px;
+}
+
+/* The chip pattern from menu.css, plus a second line for the seat count. Not
+   shared with .chip: that one is a single-line filter, this one is two lines
+   and has a sold-out state. */
+.slot {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  min-height: 52px;
+  padding: 8px 10px;
+  color: var(--text-dim);
+  font: inherit;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.2s var(--ease), background-color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.slot:hover:not([disabled]) {
+  color: var(--text);
+  border-color: var(--line-hover);
+}
+
+.slot[aria-pressed="true"] {
+  color: var(--on-brand);
+  background: var(--brand);
+  border-color: var(--brand);
+}
+
+.slot[disabled] {
+  color: var(--text-faint);
+  cursor: not-allowed;
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 138, 122, 0.7);
+}
+
+.slot-time {
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.slot-seats {
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+/* Confirmation ---------------------------------------------------------- */
+
+/* Same panel as the enquiry form's, duplicated rather than lifted into
+   site.css: two pages using it is not yet a pattern, and contact.css owns the
+   original. */
+.form-success {
+  padding: 26px;
+  background: rgba(110, 231, 160, 0.08);
+  border: 1px solid rgba(110, 231, 160, 0.35);
+  border-radius: var(--radius);
+  /* This panel replaces a form far taller than itself, so on a short phone it
+     can appear with its heading behind the 73px sticky header. main.js scrolls
+     it out (revealBelowHeader); this is where it lands. */
+  scroll-margin-top: 96px;
+}
+
+.form-success h2 {
+  margin-bottom: 8px;
+  color: var(--ok);
+  font-family: var(--font-display);
+  font-size: 24px;
+}
+
+.form-success p {
+  margin-bottom: 16px;
+  color: var(--text-dim);
+}
+
+.form-success strong {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+}
+
+/* Your bookings, and one looked up by reference -------------------------- */
+
+.booking-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.booking-list li {
+  display: grid;
+  gap: 2px;
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+}
+
+.booking-when {
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.booking-meta {
+  color: var(--text-faint);
+  font-size: 13px;
+}
+
+/* Green for a table that is held, muted for one that is not, because the two
+   states are read at a glance and not compared side by side. */
+.booking-state {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.booking-state--held {
+  color: var(--ok);
+}
+
+.booking-state--gone {
+  color: var(--text-faint);
+}
+
+.lookup-result {
+  padding-top: 16px;
+  margin-top: 16px;
+  border-top: 1px solid var(--line);
+  /* Focused by main.js after a successful lookup, and it sits low in a tall
+     sidebar, so it needs the same header clearance as .form-success. */
+  scroll-margin-top: 96px;
+}
+
+.lookup-result .button {
+  margin-top: 16px;
+}
+
+@media (max-width: 980px) {
+  .book-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

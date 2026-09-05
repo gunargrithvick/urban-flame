@@ -1,0 +1,43 @@
+#  Response headers for Netlify and Cloudflare Pages.
+#  Vercel reads the same rules from vercel.json; GitHub Pages ignores this file
+#  (it cannot set custom headers at all - noted in README.md).
+#
+#  HSTS deliberately omits includeSubDomains and preload: the deployment host
+#  may share a parent domain with other services, and those options are not
+#  easily reversible. One year on this exact host is the safe half of the header.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=()
+  Cross-Origin-Opener-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests
+
+#  HTML must revalidate: it is the only file that names the others.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+#  The staff view. It is unlinked and carries a noindex meta tag, but a meta tag
+#  only helps a crawler that already fetched the page; the header refuses it a
+#  step earlier. robots.txt disallows it as well.
+/admin.html
+  X-Robots-Tag: noindex, nofollow
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+#  CSS and JS are not content-hashed, so a day is as far as we can safely go.
+/assets/css/*
+  Cache-Control: public, max-age=86400
+
+/assets/js/*
+  Cache-Control: public, max-age=86400
+
+#  Image names are stable and their contents never change in place.
+/assets/img/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.svg
+  Cache-Control: public, max-age=604800
