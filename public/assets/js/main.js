@@ -913,7 +913,7 @@
       }
 
       if (serving()) {
-        busy(submit, true, 'Checking2026');
+        busy(submit, true, 'Checking\u2026');
         apiSend('POST', '/api/auth/login', { email: email, password: password }).then(function (res) {
           busy(submit, false);
 
@@ -1061,7 +1061,7 @@
       }
 
       if (serving()) {
-        busy(submit, true, 'Creating account2026');
+        busy(submit, true, 'Creating account\u2026');
         apiSend('POST', '/api/auth/signup', {
           name: name,
           email: email,

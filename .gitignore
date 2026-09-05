@@ -3,6 +3,11 @@
 node_modules/
 npm-debug.log*
 
+#  Database credentials and local overrides. Keep the documented template.
+.env
+.env.*
+!.env.example
+
 #  Camera originals: 47 MB of source files that tools/optimize_images.py reads
 #  to regenerate public/assets/img/. Keep them locally, never ship or commit
 #  them. They live outside public/ so no deploy can pick them up by accident.
