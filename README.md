@@ -368,8 +368,8 @@ contract or a failing API test stops the deploy.
 
 `robots.txt` allows crawling without claiming a domain-specific sitemap, and disallows
 `/admin.html` and `/api/`; add a sitemap after choosing the final public domain. No check in
-this repo can validate real business details, so the pages label their contact column as
-demo data until there are real ones to put there.
+this repo can validate real business details, so the pages use clearly fictional sample
+contact details until there are real ones to put there.
 
 ## Structure
 
@@ -489,9 +489,8 @@ the intrinsic pixel height in place and the photo stretches.
 
 ## Limitations
 
-- **The content is placeholder copy.** The dishes, prices, hours, address and phone belong
-  to a restaurant that does not exist, and the pages say so rather than pretending
-  otherwise.
+- **The content is sample copy.** The dishes, prices, hours, address, phone and email are
+  fictional details for this project, and the pages say so rather than pretending otherwise.
 - **Nothing is emailed.** A confirmed booking shows its reference on screen and is in the
   database; there is no mail provider wired up, so nobody receives anything. The copy is
   written to match.
