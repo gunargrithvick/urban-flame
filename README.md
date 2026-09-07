@@ -463,6 +463,10 @@ the site is not running at `http://localhost:8080`.
 - Payments, deposits, no-show handling, and table-by-table floor plans are not included.
 - GitHub Pages and Netlify intentionally provide frontend-only mode without the API.
 
+## Author
+
+Created by Guna Rithvick.
+
 ## License
 
-MIT. See [LICENSE](LICENSE).
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for the full license text.
