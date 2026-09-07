@@ -331,10 +331,10 @@ OK - no overflow and no wrapped header in 400 combinations (8 pages x 25 widths 
 
 `responsive.mjs` and `screenshots.mjs` share `tools/cdp.mjs`, a small DevTools-protocol
 client over Node's built-in `WebSocket` — so neither needs a package installed, but both
-need Node 21 or newer, which is where that global appeared. (`npm run check` uses nothing
-beyond `node:fs` and runs on any supported version.) They find Chrome or Edge themselves on
-Windows, macOS, and Linux; set `CHROME_PATH` to override, and `BASE_URL` if the site is not
-on `http://localhost:8080`.
+need a supported Node.js release (currently Node 22 through before Node 25, as declared in
+`package.json`). (`npm run check` uses nothing beyond `node:fs` and runs on any supported
+version.) They find Chrome or Edge themselves on Windows, macOS, and Linux; set `CHROME_PATH`
+to override, and `BASE_URL` if the site is not on `http://localhost:8080`.
 
 ## Deploying
 

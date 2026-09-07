@@ -91,7 +91,7 @@ export async function launch(options) {
   if (typeof WebSocket === 'undefined') {
     throw new Error(
       `Node ${process.versions.node} has no global WebSocket, which this DevTools client needs. ` +
-        'Use Node 21 or newer for the browser-driven scripts.',
+        'Use a supported Node.js release (currently Node 22 through before Node 25).',
     );
   }
 
