@@ -24,9 +24,3 @@ desktop.ini
 #  Local deploy caches.
 .netlify/
 .vercel/
-
-#  Database URL and session secret. .env.example is the committed template;
-#  every real .env stays on the machine that made it.
-.env
-.env.*
-!.env.example
