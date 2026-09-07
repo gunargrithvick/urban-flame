@@ -465,7 +465,7 @@ the site is not running at `http://localhost:8080`.
 
 ## Author
 
-Created by Guna Rithvick.
+Guna Rithvick.
 
 ## License
 
