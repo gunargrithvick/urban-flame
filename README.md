@@ -13,10 +13,6 @@ Experience the latest production deployment:
 
 **[Open Urban Flame →](https://urban-flame-sooty.vercel.app/)**
 
-[Browse the menu](https://urban-flame-sooty.vercel.app/menu.html) ·
-[Book a table](https://urban-flame-sooty.vercel.app/book.html) ·
-[Create an account](https://urban-flame-sooty.vercel.app/signup.html)
-
 Urban Flame is an eight-page restaurant website for a fictional flame-grill restaurant
 in Indiranagar, Bengaluru. It uses hand-written HTML, CSS, and JavaScript. There is no
 build step: the `public/` directory is the website that hosts publish.
