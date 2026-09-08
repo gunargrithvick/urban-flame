@@ -226,6 +226,9 @@ local mode.
 ## Deploy to Vercel
 
 Vercel is the recommended host because it can run both `public/` and `api/`.
+The current public production deployment is
+<https://urban-flame-sooty.vercel.app/>. Use this production domain when sharing the
+project; individual Vercel deployment URLs may be protected by Vercel Authentication.
 
 1. Push the repository to GitHub.
 2. Import the repository into Vercel.
