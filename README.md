@@ -102,7 +102,9 @@ against `ADMIN_EMAILS` on the server.
 ![Urban Flame sign-up page](docs/screenshots/signup.jpg)
 
 The screenshots are full-page captures at 1280px wide. They are stored in `docs/` and
-are not part of the deployed website. Run `npm run screenshots` to regenerate them.
+are not part of the deployed website. The committed captures were generated from the
+local no-database mode, so dynamic server-backed text such as booking availability may
+differ from the public Vercel deployment. Run `npm run screenshots` to regenerate them.
 
 ## Requirements
 
@@ -334,7 +336,17 @@ npm test
 
 Runs `npm run check` and the Node.js test suites. The API tests execute the real handlers
 against PGlite, an in-memory PostgreSQL-compatible database, so no external database is
-needed for testing.
+needed for testing. The current suite contains 76 tests across these areas:
+
+- `test/unit.test.mjs`: password hashing, validation, service dates and times, booking
+  slot rules, cookies, same-origin checks, booking references, configuration/schema
+  contracts, and browser/API agreement.
+- `test/api.test.mjs`: health checks, response headers, routing, authentication and
+  sessions, rate limits, bookings, capacity protection, availability, staff access,
+  enquiries, SQL safety, and session expiry.
+
+The two test files are the authoritative list of individual test cases; the README
+summarizes their coverage rather than duplicating every test name.
 
 ### Responsive check
 
