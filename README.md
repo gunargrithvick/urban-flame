@@ -26,9 +26,6 @@ enquiries. Vercel can run the API and share records through the database. Static
 such as GitHub Pages and Netlify publish the frontend only, so those deployments use the
 browser's `localStorage` fallback.
 
-The displayed address is **42 Ember Lane, Indiranagar, Bengaluru 560038**, the phone
-number is **+91 80 4567 8910**, and the email is **hello.urbanflame.demo@gmail.com**.
-
 ## Features
 
 - Responsive layout from 320px upward.
