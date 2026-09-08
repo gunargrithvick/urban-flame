@@ -7,7 +7,7 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-[Live Demo](https://urban-flame-lon01vzu6-guna-rithvick.vercel.app/)
+[Live Demo](https://urban-flame-sooty.vercel.app/)
 
 Urban Flame is an eight-page restaurant website for a fictional flame-grill restaurant
 in Indiranagar, Bengaluru. It uses hand-written HTML, CSS, and JavaScript. There is no
