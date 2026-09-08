@@ -7,25 +7,27 @@
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Live Demo
-
-Experience the latest production deployment:
-
-**[Open Urban Flame →](https://urban-flame-sooty.vercel.app/)**
-
 Urban Flame is an eight-page restaurant website for a fictional flame-grill restaurant
 in Indiranagar, Bengaluru. It uses hand-written HTML, CSS, and JavaScript. There is no
 build step: the `public/` directory is the website that hosts publish.
+
+This is a personal research and demonstration project, not a real restaurant service.
+The restaurant details, menu, prices, contact information, and bookings are fictional.
+
+## Live Demo
+
+Try the deployed website: **[Urban Flame](https://urban-flame-sooty.vercel.app/)**
+
+The demo is publicly accessible for evaluation. Its displayed restaurant contact details
+are demonstration data and are not monitored.
 
 The project also includes an optional PostgreSQL-backed API for accounts, bookings, and
 enquiries. Vercel can run the API and share records through the database. Static hosts
 such as GitHub Pages and Netlify publish the frontend only, so those deployments use the
 browser's `localStorage` fallback.
 
-The restaurant content and contact details are fictional sample data. The displayed
-address is **42 Ember Lane, Indiranagar, Bengaluru 560038**, the phone number is
-**+91 80 4567 8910**, and the email is **hello.urbanflame.demo@gmail.com**. They are not
-monitored.
+The displayed address is **42 Ember Lane, Indiranagar, Bengaluru 560038**, the phone
+number is **+91 80 4567 8910**, and the email is **hello.urbanflame.demo@gmail.com**.
 
 ## Features
 
